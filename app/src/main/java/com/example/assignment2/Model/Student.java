@@ -12,6 +12,7 @@ public class Student {
     protected int mcwid;
 
     protected ArrayList<com.example.assignment2.Model.Course> mCourseid;
+    protected ArrayList<com.example.assignment2.Model.Vehicle> mvehicle;
 
     public Student(String fname,String lname, int id){
         mFirstname = fname;
@@ -31,6 +32,7 @@ public class Student {
         return mcwid;
     }
 
+
     public void Setfirstname(String fname){
         mFirstname=fname;
     }
@@ -42,12 +44,13 @@ public class Student {
     public void SetCwid(int cid){
         mcwid=cid;
     }
-    public void setCourseid(ArrayList<Course>  scourse){
-        mCourseid = scourse;
+
+
+    public void setVehicleid(ArrayList<Vehicle>  veh){ mvehicle = veh;
     }
 
-    public ArrayList<Course> getCourseid(){
-        return mCourseid;
+    public ArrayList<Vehicle> getVehicleid(){
+        return mvehicle;
     }
 
 

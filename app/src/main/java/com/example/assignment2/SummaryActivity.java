@@ -3,6 +3,7 @@ package com.example.assignment2;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.example.assignment2.Adapter.Summaryadapter;
@@ -15,46 +16,51 @@ import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SummaryActivity extends AppCompatActivity {
-
     protected ListView mSummaryView;
+    protected final String TAG = "Summary Screen";
+    protected Summaryadapter ad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.student_list_lv);
-        createStudentobject();
         mSummaryView = findViewById(R.id.summary_list_id);
-        Summaryadapter ad = new Summaryadapter();
+        ad = new Summaryadapter();
         mSummaryView.setAdapter(ad);
 
     }
 
-    protected void createStudentobject(){
+    @Override
+    protected void onStart() {
+        Log.d(TAG, "onStart() called");
+        ad.notifyDataSetChanged();
+        super.onStart();
+    }
 
+    @Override
+    protected void onResume() {
+        Log.d(TAG, "onResume() called");
+        super.onResume();
+    }
 
+    @Override
+    protected void onPause() {
+        Log.d(TAG, "onPause() called");
+        super.onPause();
+    }
 
-        Student student = new Student("Santosh","Mandava",893233296);
-        ArrayList<Course> course = new ArrayList<Course>();
-        course.add(new Course("CPSC411","A"));
-        course.add(new Course("CPSC589","A"));
-        student.setCourseid(course);
+    @Override
+    protected void onStop() {
+        Log.d(TAG, "onStop() called");
+        super.onStop();
+    }
 
-        ArrayList<Student> students = new ArrayList<Student>();
-        students.add(student);
-
-        student = new Student("Vinay", "Manikyam",888933213);
-        course = new ArrayList<Course>();
-        course.add(new Course("CPSC411","A"));
-        course.add(new Course("CPSC546","A"));
-        student.setCourseid(course);
-
-
-        students.add(student);
-
-        StudentDB.getInstance().setstudentist(students);
-        System.out.println(student.getCourseid());
-
-
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "onDestroy() called");
+        super.onDestroy();
     }
 }
+
+
