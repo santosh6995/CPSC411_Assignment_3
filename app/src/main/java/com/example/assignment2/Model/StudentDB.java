@@ -28,9 +28,9 @@ public class StudentDB {
         createSQLTables();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
         if (!prefs.getBoolean("firstTime", false)) {
-            // <---- run your one time code here
+           
             createStudentobject();
-            // mark first time has ran.
+        
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("firstTime", true);
             editor.commit();
