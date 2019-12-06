@@ -20,6 +20,9 @@
         <activity android:name=".StudentDetails"
             android:parentActivityName=".SummaryActivity">
         </activity>
+        <activity android:name=".newStudent"
+            android:parentActivityName=".SummaryActivity">
+        </activity>
 
     </application>
 

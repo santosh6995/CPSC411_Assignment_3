@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         root = findViewById(R.id.student_list);
 
 
-        ArrayList<Student> studentlist = StudentDB.getInstance().getstudentList();
+        ArrayList<Student> studentlist = new StudentDB(this).getstudentList();
 
         for (int i=0;i<studentlist.size();i++){
             System.out.println(i);

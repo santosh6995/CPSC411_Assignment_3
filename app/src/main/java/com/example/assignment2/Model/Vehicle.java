@@ -1,14 +1,23 @@
 package com.example.assignment2.Model;
-public class Vehicle {
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+public class Vehicle extends PersistentObject{
     protected int mYear;
     protected String mMake;
     protected String mModel;
+    protected int mcwid;
 
-    public Vehicle(String mk, String mdl, int y) {
+    public Vehicle(){}
+
+    public Vehicle(String mk, String mdl, int y, int cwid) {
 
         mMake = mk;
         mModel = mdl;
         mYear = y;
+        mcwid=cwid;
     }
 
     public int getyear() {
@@ -34,4 +43,23 @@ public class Vehicle {
     public void setModel(String model) {
         mModel = model;
     }
+
+    @Override
+    public void insert(SQLiteDatabase db) {
+        ContentValues vals = new ContentValues();
+        vals.put("Make", mMake);
+        vals.put("Model", mModel);
+        vals.put("Year", mYear);
+        vals.put("CWID", mcwid);
+        db.insert("VEHICLE", null, vals);
+    }
+
+    @Override
+    public void initFrom(Cursor c, SQLiteDatabase db) {
+        mMake = c.getString(c.getColumnIndex("Make"));
+        mModel = c.getString(c.getColumnIndex("Model"));
+        mYear = c.getInt(c.getColumnIndex("Year"));
+
+    }
+
 }

@@ -26,7 +26,8 @@ public class SummaryActivity extends AppCompatActivity {
 
         setContentView(R.layout.student_list_lv);
         mSummaryView = findViewById(R.id.summary_list_id);
-        ad = new Summaryadapter();
+        new StudentDB(this).retrieveStudentObjects();
+        ad = new Summaryadapter(this);
         mSummaryView.setAdapter(ad);
 
     }
@@ -34,6 +35,7 @@ public class SummaryActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         Log.d(TAG, "onStart() called");
+
         ad.notifyDataSetChanged();
         super.onStart();
     }
