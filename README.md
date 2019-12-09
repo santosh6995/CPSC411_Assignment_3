@@ -2,6 +2,7 @@
 CPSC411 Assignment 3
 
 Download the Project and open in android studio
+Save the StudentDB.db file from the device file explorer in android studio. Open the DB browser Lite.
 
 ![alt text](db1.png)
 ![alt text](db2.png)
